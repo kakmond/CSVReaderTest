@@ -2,7 +2,7 @@
 
 This repository contains JUnit tests for the CSVReader assignment.
 
-* `EasyCSVReaderTest.java` - example CSV data from the assignment sheet, and two tests of whether CSVReader skips blank lines and comment lines.
+* `EasyCSVReaderTest.java` - example CSV data from the assignment sheet, and two tests of whether CSVReader skips blank lines, skips comment lines, and strips leading/trailing whitespace around fields (unless the space is inside quotes).
 
 * `BigCSVReaderTest.java` - more detailed tests of CSVReader.
 
@@ -20,7 +20,7 @@ In Eclipse, if your project contains JUnit tests but doesn't have the JUnit libr
 1. How to add JUnit to an Eclipse or Netbeans project.
     * Eclipse and Netbeans include JUnit, so simply add the JUnit 4 library to your project configuration.
 2. How to configure a project to have 2 "source" directories: the main source code (in the `src` directory) and test source code (a `test` directory).
-    * First, add the test code to a folder named `test`. The test folder should have the same directory structure as your main `src` folder. (See below)
+    * First, add the test source code to a folder named `test`. See below for how to add CSVReader tests to your project, which will create the `test` folder.
     * In Eclipse, open the dialog for Project -> Properties and choose "Java Build Path".  Select the "Source" tab.  Click "Add Folder..." and add the test folder.  Exit the dialog.
     * Now, Eclipse will compile and run files in both the `src` and `test` folders.
 
@@ -61,6 +61,19 @@ test/README.md
 test/ku/util
 test/ku/util/BigCSVReaderTest.java
 test/ku/util/EasyCSVReaderTest.java
+```
+
+Whichever method you use to add tests, your project structure should look like this:
+```
+csvreader
+csvreader/.git/
+csvreader/.gitignore
+csvreader/README.md                   (your own README.md file)
+csvreader/src
+csvreader/src/ku/util/CSVReader.java  (your source code)
+csvreader/test
+csvreader/test/ku/util/BigCSVReaderTest.java
+csvreader/test/ku/util/EasyCSVReaderTest.java
 ```
 
 ### Running the Tests
