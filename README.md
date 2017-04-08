@@ -31,22 +31,24 @@ In Eclipse, if your project contains JUnit tests but doesn't have the JUnit libr
 #### 1. Using git submodule (the preferred way)
 
 The Git repository for CSVReaderTest is structured as a Git submodule.
-Git submodules let you add a Git repository inside another Git repository, but keep the two sets of files separate.  Here are the steps:
+Git submodules let you add a Git repository inside another Git repository, but keep the two sets of files separate.  If you add code as a "submodule", `git` will not commit the test code as part of your project (git knows its a separate project).
+
+Here are the steps:
 
 ```
-# 1. change directory to your CSVReader project
+1. change directory to your CSVReader project
 > cd /workspace/csvreader
 
-# 2. add the CSVReaderTest as a submodule, and put the files in a 
-#    subdirectory named "test".  
-#    IMPORTANT: don't forget the "test" parameter on command line
+2. add the CSVReaderTest as a submodule, and put the files in a 
+   subdirectory named "test".  
+   IMPORTANT: don't forget the "test" parameter on command line
 > git submodule add https://github.com/OOP2017/CSVReaderTest.git test
 
 # This should add files to the "test" directory.
 # You should have files
 # test/ku/util/BigCSVReaderTest.java and test/ku/util/EasyCSVReaderTest.java
 
-# 3. If you _don't_ have any files in the test directory then do this:
+3. If you _don't_ have any files in the test directory then do this:
 > git submodule init
 > git submodule update
 ```
@@ -62,8 +64,9 @@ test/ku/util
 test/ku/util/BigCSVReaderTest.java
 test/ku/util/EasyCSVReaderTest.java
 ```
+If you add files this way, then add the `test/` directory to your project's `.gitignore` file.
 
-Whichever method you use to add tests, your project structure should look like this:
+Whichever method you use, your project structure should look like this:
 ```
 csvreader
 csvreader/.git/
@@ -82,7 +85,7 @@ csvreader/test/ku/util/EasyCSVReaderTest.java
 
     Right click on one of the files and select "Run as..." > "JUnit test case". This is the best way, since you can see the JUnit failure messages. If you click on a failure message, it will show the JUnit test code that caused the failure.
 
-* Run as ordinary Java program in Eclipse:
+* Run as a Java application:
 
-    Right click on a file and select "Run as..." > "Java Application".  This runs the same tests as using JUnit, but uses my test runner which prints extra output.
+    Right click on a file and select "Run as..." > "Java Application".  This runs the same tests as using JUnit, but uses my test runner in the main method.
 
