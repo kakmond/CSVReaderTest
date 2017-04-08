@@ -28,6 +28,8 @@ import ku.util.CSVReader;
  * if you have junit.jar on your classpath:
  * java -cp /path-to-junit/junit.jar;. BigCSVReaderTest
  *
+ * @author Jim Brucker
+ *
  */
 public class BigCSVReaderTest {
 	// A temporary file used to write data for tests.
