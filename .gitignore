@@ -4,6 +4,11 @@
 bin/
 build/
 
+# project specific
+*.csv
+doc/
+solution/
+
 # Ignore Eclipse project files
 .classpath
 .project
