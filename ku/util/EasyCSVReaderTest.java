@@ -8,9 +8,20 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * Some simple JUnit 4 tests of the CSVReader.
+ * The first test is exactly the example from the assignment sheet,
+ * so everyone should get that.
+ * The other tests verify that CSVReader strips leading/trailing whitespace,
+ * ignores blank lines in the data file (which sometimes occurs in CSV data),
+ * and ignores comment lines (lines starting with # character).
+ */
 public class EasyCSVReaderTest {
 
-
+    // Temporary file for CSV test data.  This file is rewritten for each test.
+    // The file is created automatically.
+    // Set it to whatever is appropriate for your system. 
+    // You can include a path, but the path nad file must be writable.
 	private final String tempfilename = "testdata.csv";
 	private File file;
 	private InputStream instream;
@@ -18,6 +29,7 @@ public class EasyCSVReaderTest {
 	private PrintStream out;
 	private char delimiter = ',';
 	
+	/** What to do before each test. */
 	@Before
 	public void setUp() throws Exception {
 		file = new File(tempfilename);
@@ -25,16 +37,18 @@ public class EasyCSVReaderTest {
 		out = new PrintStream(outstream, true);
 	}
 
+	/** What to do after each test. */
 	@After
 	public void tearDown() throws Exception {
 		if (instream!=null) try { instream.close(); } catch(IOException e) {/*ignore*/}
 		if (outstream!=null) try { outstream.close(); } catch(IOException e) {/*ignore*/}
 		if ( file.exists() ) {
-			System.out.println("CSV filename "+file.getAbsolutePath() );
+			// Print the name and path of test file?
+			//System.out.println("CSV filename "+file.getAbsolutePath() );
 			
-			// Delete the old file to guarantee contents are overwritten for each test.
-			// Don't delete file if you want to verify path or contents.
-			//file.delete();
+			// Delete file to guarantee contents are overwritten for each test.
+			// This should not be necessary.
+			file.delete();
 		}
 		instream = null;
 	}
@@ -144,7 +158,6 @@ public class EasyCSVReaderTest {
 		}
 		return instream;
 	}
-	
 	
 	/** Run a test suite and describe the results. */
 	public static void main(String[] args) {
